@@ -24,6 +24,6 @@ def join_sentences(output_from_text_model):
   sentences = [str(i) for i in nlp(output_from_text_model[0]["generated_text"]).sents]
 
   sentences.pop() # remove last dangling sentence.
-  joined_sentences = ''.join(sentences)
+  joined_sentences = ' '.join(sentences)
 
   return joined_sentences
