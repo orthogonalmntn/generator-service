@@ -1,8 +1,8 @@
-import spacy
-from transformers import pipeline
+"""""
+  Text generating models and helper functions
+"""""
 
-# Load up SpaCy language model
-nlp = spacy.load("en_core_web_sm")
+from transformers import pipeline
 
 # Load & start up GPT-2
 generator = pipeline('text-generation', model='gpt2')

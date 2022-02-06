@@ -1,4 +1,5 @@
-from generator_service.generators import nlp, generator
+from generator_service.generators import generator
+from generator_service.nlp import nlp, compound_names_based_on_ent_iob, join_sentences
 
 class Planet:
   def __init__(self, name, description):
@@ -22,25 +23,7 @@ def try_generate_planet_name():
 
 def try_generate_planet_description(planet_name):
   output = generator(f"The planet {planet_name} can be described as", do_sample=True, min_length=50)
-  sentences = [str(i) for i in nlp(output[0]["generated_text"]).sents]
-
-  sentences.pop() # remove last dangling sentence.
-  joined_sentences = ''.join(sentences)
-
-  return joined_sentences
-
-def compound_names_based_on_ent_iob(names):
-    compounded_names = {}
-    i = 0
-
-    for name in names:
-        if name[1] == 3:
-            compounded_names[i] = name[0]
-        if name[1] == 1:
-            compounded_names[i] = compounded_names[i] + " " + name[0]
-        if name[1] == 2:
-            i += 1
-    return list(compounded_names.values())
+  return join_sentences(output)
 
 def generate_planet_name():
     prompt = "A creative name for a planet outside our Solar System is"
