@@ -4,12 +4,13 @@
 
 import jwt
 from fastapi import HTTPException
+import os
+
+ALGORITHM = "HS512"
+SECRET_KEY = os.environ["JWT_SECRET_KEY"]
 
 def verify_token(token):
-  secret_key = "SOME_SECRET_KEY"
-  algorithm = "HS512"
-
   try:
-    jwt.decode(token, secret_key, algorithms=[algorithm])
+    jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
   except jwt.exceptions.InvalidTokenError:
     raise HTTPException(status_code=403, detail="Access denied")
