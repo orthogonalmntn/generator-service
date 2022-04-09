@@ -49,10 +49,6 @@ def generate_planet_name():
     
         sanitized_list = [e for e in compound_names if e not in forbidden_planet_names]
 
-        # token.ent_iob
-        # (B == starts new entity, I == continues, O == not entity, so BII would be one word)
-        # 3 == starts new entity, 1 == continues, 2 == not entity 311 would be one
-
         if len(sanitized_list) > 0:
             all_generated_planets.append(sanitized_list)
     

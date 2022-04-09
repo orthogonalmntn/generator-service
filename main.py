@@ -11,7 +11,7 @@ app = FastAPI()
 
 @app.get("/ping")
 def ping():
-    return {"OK"}
+    return("OK")
 
 @app.get("/planet")
 def get_planet(x_token: Optional[str] = Header(None)):

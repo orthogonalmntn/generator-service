@@ -23,7 +23,7 @@ def compound_names_based_on_ent_iob(names):
 def join_sentences(output_from_text_model):
   sentences = [str(i) for i in nlp(output_from_text_model[0]["generated_text"]).sents]
 
-  sentences.pop() # remove last dangling sentence.
+  sentences.pop()
   joined_sentences = ' '.join(sentences)
 
   return joined_sentences

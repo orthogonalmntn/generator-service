@@ -7,5 +7,5 @@ from transformers import pipeline
 # Load & start up GPT-2
 generator = pipeline('text-generation', model='gpt2')
 
-# We can use different generators of Description if needed:
-# generator_2 = pipeline('text-generation', model='EleutherAI/gpt-neo-1.3B')
+# We can use a more capable generator of Description if needed, but it will generate slower:
+# generator = pipeline('text-generation', model='EleutherAI/gpt-neo-1.3B')
